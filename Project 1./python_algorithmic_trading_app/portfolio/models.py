@@ -105,3 +105,11 @@ class PerformanceMetric(models.Model):
     winning_trades = models.IntegerField(default=0)
     losing_trades = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = "performance_metrics"
+        unique_together = ("portfolio", "date")
+        ordering = ["-date"]
+        indexes = [
+            models.Index(fields=["portfolio", "date"]),
+        ]
