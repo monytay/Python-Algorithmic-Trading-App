@@ -98,7 +98,7 @@ class PerformanceMetric(models.Model):
     daily_return = models.DecimalField(
         max_digits=8, decimal_places=6, null=True, blank=True
     )
-    cumulative_return = models.DecimalField(
+    cummulative_return = models.DecimalField(
         max_digits=8, decimal_places=6, null=True, blank=True
     )
     total_trades = models.IntegerField(default=0)

@@ -67,24 +67,24 @@ class TradingSignal(models.Model):
             models.Index(fields=["is_executed"]),
         ]
     
-    class RebalanceEvent(models.Model):
-        date = models.DateField(db_index=True)
-        total_stocks_analyzed = models.IntegerField()
-        buy_signals_generated = models.IntegerField()
-        sell_signals_generated = models.IntegerField()
-        total_portfolio_value = models.DecimalField(
-            max_digits=15, decimal_places=2, null=True, blank=True
-        )
-        execution_status = models.CharField(
-            max_length=20,
-            choices=[
-                ("PENDING","Pending"),
-                ("IN_PROGRESS", "In Progress"),
-                ("COMPLETED", "Completed"),
-                ("FAILED", "Failed")
-            ],
-            default="PENDING",
-        )
-        error_message = models.TextField(blank=True)
-        created_at = models.DateTimeField(auto_now_add=True)
-        completed_at = models.DateTimeField(null=True, blank=True)
+class RebalanceEvent(models.Model):
+    date = models.DateField(db_index=True)
+    total_stocks_analyzed = models.IntegerField()
+    buy_signals_generated = models.IntegerField()
+    sell_signals_generated = models.IntegerField()
+    total_portfolio_value = models.DecimalField(
+        max_digits=15, decimal_places=2, null=True, blank=True
+    )
+    execution_status = models.CharField(
+        max_length=20,
+        choices=[
+            ("PENDING","Pending"),
+            ("IN_PROGRESS", "In Progress"),
+            ("COMPLETED", "Completed"),
+            ("FAILED", "Failed")
+        ],
+        default="PENDING",
+    )
+    error_message = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    completed_at = models.DateTimeField(null=True, blank=True)
